@@ -16,7 +16,7 @@ import java.util.Date;
  * Created by Kristianto Yanuar on 12/16/2015.
  */
 @MappedSuperclass
-public abstract class BaseEntity<ID extends Serializable> implements Serializable {
+public abstract class AbstractEntity<ID extends Serializable> implements Serializable {
 
     @CreatedDate
     protected Date createdDate;
@@ -30,7 +30,7 @@ public abstract class BaseEntity<ID extends Serializable> implements Serializabl
     @LastModifiedBy
     protected User modifiedBy;
 
-    public BaseEntity() {
+    public AbstractEntity() {
         createdDate = new Date();
     }
 
@@ -76,8 +76,8 @@ public abstract class BaseEntity<ID extends Serializable> implements Serializabl
         if (obj != null
                 && this.getId() != null
                 && this.getClass().equals(obj.getClass())
-                && obj instanceof BaseEntity
-                && this.getId().equals(((BaseEntity) obj).getId())) return true;
+                && obj instanceof AbstractEntity
+                && this.getId().equals(((AbstractEntity) obj).getId())) return true;
 
         return false;
     }

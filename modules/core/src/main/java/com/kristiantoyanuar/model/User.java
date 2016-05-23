@@ -15,7 +15,7 @@ import java.util.Collection;
  * Created by Kristianto Yanuar on 5/21/16.
  */
 @Entity
-public class User extends BaseEntity<Long> implements UserDetails{
+public class User extends AbstractEntity<Long> implements UserDetails{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
