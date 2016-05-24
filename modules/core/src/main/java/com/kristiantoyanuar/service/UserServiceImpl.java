@@ -1,5 +1,6 @@
 package com.kristiantoyanuar.service;
 
+import com.kristiantoyanuar.exception.ApplicationException;
 import com.kristiantoyanuar.model.User;
 import com.kristiantoyanuar.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +28,29 @@ public class UserServiceImpl implements UserService {
     @Transactional(readOnly = true)
     public Collection<Page> search(Specification<User> userSpecification, Pageable pageable) {
         return userRepository.findAll(userSpecification, pageable);
+    }
+
+    public User create(User user) {
+        return userRepository.save(user);
+    }
+
+    public User edit(User user) throws ApplicationException {
+        if (user != null && userRepository.exists(user.getId()))
+            return userRepository.save(user);
+        else throw new ApplicationException("User is not exist");
+    }
+
+    public User getById(Long id) throws ApplicationException {
+        User existingUser = userRepository.findOne(id);
+        if (existingUser != null)
+            return existingUser;
+        throw new ApplicationException("User is not exist");
+    }
+
+    public User getByUsername(String username) throws ApplicationException {
+        User existingUser = userRepository.findByUsername(username);
+        if (existingUser != null)
+            return existingUser;
+        throw new ApplicationException("User is not exist");
     }
 }

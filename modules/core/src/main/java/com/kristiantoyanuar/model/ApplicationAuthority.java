@@ -9,10 +9,17 @@ import org.springframework.security.core.GrantedAuthority;
  */
 public enum ApplicationAuthority implements GrantedAuthority{
     LOGIN,
+    // User
     USER_SEARCH,
     USER_CREATE,
     USER_EDIT,
-    USER_DELETE;
+    USER_DELETE,
+    // Student
+    STUDENT_SEARCH,
+    STUDENT_CREATE,
+    STUDENT_EDIT,
+    STUDENT_DELETE
+    ;
 
     public String getAuthority() {
         return name();

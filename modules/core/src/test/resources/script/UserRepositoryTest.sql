@@ -1,2 +1,2 @@
-insert into user (email, username, password) values
-('kristianto.yanuar@icloud.com', 'yanuar199', 'MyPasswordHere');
+insert into user (id, email, username, password) values
+(1, 'kristianto.yanuar@icloud.com', 'yanuar199', 'MyPasswordHere');

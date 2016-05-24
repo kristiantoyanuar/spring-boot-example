@@ -1,5 +1,6 @@
 package com.kristiantoyanuar.test.service;
 
+import com.kristiantoyanuar.exception.ApplicationException;
 import com.kristiantoyanuar.model.User;
 import com.kristiantoyanuar.repo.UserRepository;
 import com.kristiantoyanuar.service.UserService;
@@ -80,7 +81,7 @@ public class UserServiceMockitoTest {
     }
 
     @Test
-    public void testSearchUserByUsername() {
+    public void testSearchUserByUsername() throws ApplicationException {
         Collection<Page> searchResult = userService.search(searchSpecification, pagination);
         assertEquals(searchResult.iterator().next().getTotalElements(), 1);
         assertEquals(((User)searchResult.iterator().next().getContent().get(0)).getUsername(), "yanuar199");
