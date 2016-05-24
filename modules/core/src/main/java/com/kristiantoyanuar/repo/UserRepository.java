@@ -22,6 +22,11 @@ public interface UserRepository extends JpaRepository<User, Long> {
      */
     Collection<Page> findAll(Specification<User> userSpecification, Pageable pageable);
 
+    /**
+     * Find user by username
+     * @param username
+     * @return
+     */
     User findByUsername(String username);
 
 }

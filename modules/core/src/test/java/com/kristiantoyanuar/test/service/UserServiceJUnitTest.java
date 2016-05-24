@@ -8,8 +8,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
@@ -30,6 +32,7 @@ import static org.junit.Assert.*;
         DependencyInjectionTestExecutionListener.class,
         WithSecurityContextTestExecutionListener.class})
 @Rollback
+@DirtiesContext
 public class UserServiceJUnitTest extends AbstractTransactionalJUnit4SpringContextTests{
 
     @Autowired
@@ -59,7 +62,7 @@ public class UserServiceJUnitTest extends AbstractTransactionalJUnit4SpringConte
         assertNotNull(stranger.getId());
     }
 
-    @Test(expected = AuthenticationCredentialsNotFoundException.class)
+    @Test(expected = AuthenticationException.class)
     public void testCreateUserInsufficientAuthority() throws ApplicationException {
         User stranger2 = new User();
         stranger2.setUsername("stranger2");
@@ -74,9 +77,10 @@ public class UserServiceJUnitTest extends AbstractTransactionalJUnit4SpringConte
 
 
     @Test
-    @WithMockUser(authorities = "USER_EDIT")
+    @WithMockUser(authorities = {"USER_EDIT","USER_SEARCH"})
+    @Sql(statements = "insert into user(username, email) values ('yanuar199', 'yanuar199@mydomain.com')")
     public void testEditUser() throws ApplicationException {
-        User yanuar199 =
+        User yanuar199 = userService.getByUsername("yanuar199");
 
         yanuar199.setUsername("kristianto.yanuar");
         userService.edit(yanuar199);

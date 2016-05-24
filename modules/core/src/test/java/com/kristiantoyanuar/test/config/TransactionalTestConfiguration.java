@@ -47,6 +47,8 @@ public class TransactionalTestConfiguration extends AbstractTestConfiguration {
         factory.setDataSource(dataSource());
         factory.getJpaPropertyMap().put("hibernate.dialect", environment.getProperty("spring.jpa.database-platform"));
         factory.getJpaPropertyMap().put("hibernate.show_sql", environment.getProperty("spring.jpa.show-sql"));
+        factory.getJpaPropertyMap().put("hibernate.hbm2ddl.import_files",
+                environment.getProperty("spring.jpa.hibernate.hbm2ddl.import_files"));
         factory.getJpaPropertyMap().put("hibernate.hbm2dll.auto",
                 environment.getProperty("spring.jpa.hibernate.ddl-auto"));
         factory.afterPropertiesSet();
