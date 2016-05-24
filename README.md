@@ -27,7 +27,7 @@ Using default security password: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 Access the API with username 'user' and use the provided password above
 ```
-$ curl -u user:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx http://localhost:8080/student/1
+$ curl -u user:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx http://localhost:8080/api/student/1
 ```
 
 will return 

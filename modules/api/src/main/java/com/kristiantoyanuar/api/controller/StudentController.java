@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by Kristianto Yanuar on 5/24/2016.
  */
 @RestController
-@RequestMapping("/student")
+@RequestMapping("/api/student")
 public class StudentController {
 
     @Autowired
