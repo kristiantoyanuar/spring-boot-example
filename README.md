@@ -3,17 +3,20 @@ This project use Spring Boot
 ## Commands
 
 **Install**
+
 ```
 mvn clean test install
 ```
 
 **Run it**
+
 Move to folder module/api
 ```
 mvn spring-bot:run
 ```
 
 **Usage**
+
 On console, find this line
 ```
 Using default security password: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
