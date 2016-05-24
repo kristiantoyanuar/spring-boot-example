@@ -10,7 +10,7 @@ mvn clean test install
 
 **Run it**
 
-Move to folder module/api
+Execute this on folder module/api
 ```
 mvn spring-bot:run
 ```
