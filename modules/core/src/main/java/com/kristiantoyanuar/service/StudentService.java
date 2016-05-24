@@ -18,4 +18,13 @@ public interface StudentService {
     @PreAuthorize("hasAuthority('STUDENT_CREATE')")
     Student create(Student student) throws ApplicationException;
 
+    /**
+     * Find a student by ID
+     * @param id
+     * @return the existing student
+     * @throws ApplicationException if not found or error
+     */
+    @PreAuthorize("hasAuthority('STUDENT_SEARCH')")
+    Student getById(Long id) throws ApplicationException;
+
 }

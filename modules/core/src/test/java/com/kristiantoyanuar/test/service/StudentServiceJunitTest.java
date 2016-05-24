@@ -14,6 +14,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
@@ -21,6 +22,7 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * Created by Kristianto Yanuar on 5/24/2016.
@@ -50,5 +52,14 @@ public class StudentServiceJunitTest extends AbstractTransactionalJUnit4SpringCo
 
         assertEquals(countRowsInTableWhere("student", "code='672007199' and firstname='Kristianto' and lastname = " +
                 "'Yanuar'"), 1);
+    }
+
+    @Test
+    @WithMockUser(authorities = "STUDENT_SEARCH")
+    @Sql(statements = "insert into student (id, code, firstname, lastname) values (1, 'S_01', 'Junaidi', 'Abidin')")
+    public void testGetStudent() throws ApplicationException {
+        Student junaidi = studentService.getById(1L);
+
+        assertNotNull(junaidi);
     }
 }

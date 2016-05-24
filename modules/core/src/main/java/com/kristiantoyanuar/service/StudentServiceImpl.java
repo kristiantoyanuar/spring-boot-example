@@ -18,4 +18,11 @@ public class StudentServiceImpl implements StudentService {
     public Student create(Student student) throws ApplicationException {
         return studentRepository.save(student);
     }
+
+    public Student getById(Long id) throws ApplicationException {
+        Student existingStudent = studentRepository.findOne(id);
+        if (existingStudent != null)
+            return existingStudent;
+        throw new ApplicationException("Student is not exist");
+    }
 }
