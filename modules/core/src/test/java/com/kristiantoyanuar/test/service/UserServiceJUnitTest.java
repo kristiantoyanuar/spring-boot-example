@@ -59,7 +59,7 @@ public class UserServiceJUnitTest extends AbstractTransactionalJUnit4SpringConte
 
         userService.create(stranger);
 
-        assertNotNull(stranger.getId());
+        assertEquals(countRowsInTableWhere("user", "username='stranger'"), 1);
     }
 
     @Test(expected = AuthenticationException.class)
@@ -70,11 +70,7 @@ public class UserServiceJUnitTest extends AbstractTransactionalJUnit4SpringConte
         stranger2.setPassword("fakepassword123!");
 
         userService.create(stranger2);
-
-        assertNotNull(stranger2.getId());
     }
-
-
 
     @Test
     @WithMockUser(authorities = {"USER_EDIT","USER_SEARCH"})
