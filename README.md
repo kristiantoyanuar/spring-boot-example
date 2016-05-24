@@ -2,6 +2,9 @@
 This project use Spring Boot
 ## Commands
 
+**Configure**
+Open `application.properties` and change the database url, username and password to your local database
+
 **Install**
 
 ```
