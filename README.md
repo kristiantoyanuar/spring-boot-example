@@ -16,6 +16,16 @@ On console find this line
 Using default security password: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 4. Access the API with username 'user' and use the provided password above
+```
+$ curl -u user:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx http://localhost:8080/student/1
+```
+
+will return 
+```
+{"createdDate":null,"createdBy":null,"lastModified":null,"modifiedBy":null,"firstName":"John","middleName":null,"lastName":"Doe","birthDate":null,"gender":null,"id":1,"code":"S_01"}
+```
+
+
 ## Project Structure
 ```
 + ROOT (Parent)
