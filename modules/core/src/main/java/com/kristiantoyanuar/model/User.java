@@ -15,6 +15,7 @@ import java.util.Collection;
  * Created by Kristianto Yanuar on 5/21/16.
  */
 @Entity
+@Table(name = "user_account")
 public class User extends AbstractEntity<Long> implements UserDetails{
 
     @Id

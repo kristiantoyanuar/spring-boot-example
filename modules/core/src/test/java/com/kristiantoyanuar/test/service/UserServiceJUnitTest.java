@@ -59,7 +59,7 @@ public class UserServiceJUnitTest extends AbstractTransactionalJUnit4SpringConte
 
         userService.create(stranger);
 
-        assertEquals(countRowsInTableWhere("user", "username='stranger'"), 1);
+        assertEquals(countRowsInTableWhere("user_account", "username='stranger'"), 1);
     }
 
     @Test(expected = AuthenticationException.class)
@@ -74,15 +74,15 @@ public class UserServiceJUnitTest extends AbstractTransactionalJUnit4SpringConte
 
     @Test
     @WithMockUser(authorities = {"USER_EDIT","USER_SEARCH"})
-    @Sql(statements = "insert into user(username, email) values ('yanuar199', 'yanuar199@mydomain.com')")
+    @Sql(statements = "insert into user_account(username, email) values ('yanuar199', 'yanuar199@mydomain.com')")
     public void testEditUser() throws ApplicationException {
         User yanuar199 = userService.getByUsername("yanuar199");
 
         yanuar199.setUsername("kristianto.yanuar");
         userService.edit(yanuar199);
 
-        assertEquals(countRowsInTableWhere("user", "username=\'yanuar199\'"), 0);
-        assertEquals(countRowsInTableWhere("user", "username=\'kristianto.yanuar\'"), 1);
+        assertEquals(countRowsInTableWhere("user_account", "username=\'yanuar199\'"), 0);
+        assertEquals(countRowsInTableWhere("user_account", "username=\'kristianto.yanuar\'"), 1);
     }
 
 }

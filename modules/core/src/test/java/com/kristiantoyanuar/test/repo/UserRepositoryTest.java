@@ -37,7 +37,7 @@ public class UserRepositoryTest extends AbstractTransactionalJUnit4SpringContext
     UserRepository userRepository;
 
     @Test
-    @Sql(statements = "insert into user(username, email) values ('jojon', 'jojon@gmail.com')")
+    @Sql(statements = "insert into user_account(username, email) values ('jojon', 'jojon@gmail.com')")
     public void testSearchByUsername() {
         Specification<User> searchSpecification = new Specification<User>() {
             public Predicate toPredicate(Root<User> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
@@ -52,7 +52,7 @@ public class UserRepositoryTest extends AbstractTransactionalJUnit4SpringContext
     }
 
     @Test
-    @Sql(statements = "insert into user(username, email) values ('jojon', 'jojon@gmail.com')")
+    @Sql(statements = "insert into user_account(username, email) values ('jojon', 'jojon@gmail.com')")
     public void testFindByUsername() {
         assertNotNull(userRepository.findByUsername("jojon"));
     }
