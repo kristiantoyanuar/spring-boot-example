@@ -4,7 +4,7 @@ This project use Spring Boot
 
 **Configure**
 
-Open `application.properties` and change the database url, username and password to your local database
+Open `application.properties` located on `modules/api/src/main/resources/` and change the database url, username and password to your local database
 
 **Install**
 
