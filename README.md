@@ -20,15 +20,20 @@ gradle clean test build
 
 **Run it**
 
-Execute this on folder module/api
+
+
 Maven:
+
+Execute this on folder module/api
 ```
 mvn spring-bot:run
 ```
 
 Gradle:
+
+Execute this on project root
 ```
-gradle clean test build
+gradle api:bootRun
 ```
 
 **Usage**
