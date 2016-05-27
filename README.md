@@ -8,15 +8,27 @@ Open `application.properties` located on `modules/api/src/main/resources/` and c
 
 **Install**
 
+Maven:
 ```
 mvn clean test install
+```
+
+Gradle:
+```
+gradle clean test build
 ```
 
 **Run it**
 
 Execute this on folder module/api
+Maven:
 ```
 mvn spring-bot:run
+```
+
+Gradle:
+```
+gradle clean test build
 ```
 
 **Usage**
