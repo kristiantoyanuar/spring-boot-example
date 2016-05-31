@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.Collection;
 
@@ -14,7 +15,7 @@ import java.util.Collection;
  *
  * Created by Kristianto Yanuar on 5/21/16.
  */
-public interface UserService {
+public interface UserService extends UserDetailsService{
 
     /**
      * Search user based on given specification. Only user has

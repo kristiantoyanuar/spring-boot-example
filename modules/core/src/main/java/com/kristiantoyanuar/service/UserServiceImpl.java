@@ -10,6 +10,8 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -52,5 +54,14 @@ public class UserServiceImpl implements UserService {
         if (existingUser != null)
             return existingUser;
         throw new ApplicationException("User is not exist");
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+        try {
+            return getByUsername(s);
+        } catch (ApplicationException e) {
+            throw new UsernameNotFoundException(e.getMessage());
+        }
     }
 }

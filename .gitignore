@@ -7,3 +7,4 @@ gradle
 out
 modules/api/bin
 modules/core/bin
+.settings
