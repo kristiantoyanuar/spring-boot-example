@@ -1,6 +1,0 @@
-rootProject.name = 'spring-boot-example'
-include ':api'
-include ':core'
-
-project(':api').projectDir = "$rootDir/modules/api" as File
-project(':core').projectDir = "$rootDir/modules/core" as File
