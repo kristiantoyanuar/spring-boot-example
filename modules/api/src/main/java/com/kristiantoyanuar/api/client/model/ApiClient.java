@@ -1,5 +1,6 @@
 package com.kristiantoyanuar.api.client.model;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -30,8 +31,8 @@ import com.kristiantoyanuar.model.AbstractEntity;
 @Table(name = "api_client")
 public class ApiClient extends AbstractEntity<String> implements ClientDetails {
 
-	public static final List<GrantedAuthority> DEFAULT_CLIENT_AUTHORITIES = Collections
-			.unmodifiableList(Arrays.asList(new SimpleGrantedAuthority("ROLE_CLIENT")));
+	public static final List<GrantedAuthority> DEFAULT_CLIENT_AUTHORITIES =
+			new ArrayList<GrantedAuthority>(Arrays.asList(new SimpleGrantedAuthority("ROLE_CLIENT")));
 
 	@Id
 	@Column(name = "client_id")
